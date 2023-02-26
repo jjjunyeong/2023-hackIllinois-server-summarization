@@ -14,7 +14,7 @@ def video_to_audio(video_file_path):
     
     return audio_file_path
 
-def parse_audio(file_path):
+def parse_audio(file_path, oid):
     #Set the REPLICATE_API_TOKEN environment variable
     os.environ["REPLICATE_API_TOKEN"] = REPLICATE_API_TOKEN
     
@@ -36,6 +36,6 @@ def parse_audio(file_path):
     # https://replicate.com/openai/whisper/versions/30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed#input
     
     output = version.predict(**inputs)
-    text_objects = [{'type': 'audio', 'raw': seg['text'], 'start': seg['start'], 'end': seg['end'], 'id': seg['id']} for seg in output['segments']]
+    text_objects = [{'type': 'video', 'raw': seg['text'], 'start': seg['start'], 'end': seg['end'], 'oid': oid} for seg in output['segments']]
         
     return text_objects

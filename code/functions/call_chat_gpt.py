@@ -39,7 +39,7 @@ def paraphrase(summary):
         
         idx = np.argmax(similarity)
         sent_dict['type'] = summary[idx]['type']
-        if sent_dict['type'] == 'audio':
+        if sent_dict['type'] == 'video':
             sent_dict['start'] = summary[idx]['start']
             sent_dict['sent'] = rf_sent
         elif sent_dict['type'] == 'pdf':

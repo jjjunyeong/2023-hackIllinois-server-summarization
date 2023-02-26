@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/api/v1/machinelearning', methods=['GET', 'POST'])
 def base():
-    # return "hello world"
+    print('we are at the base!!')
+    print(request)
     if request.method == 'POST':
         receive_data(request.data)
         return 'Received a POST request!', 200

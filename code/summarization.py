@@ -21,12 +21,12 @@ def receive_data(data):
             audio_file_path = video_to_audio(object['file_path'])
             
             # parse audio
-            text_from_audio = parse_audio(audio_file_path)
+            text_from_audio = parse_audio(audio_file_path, object['oid'])
             combined_text += text_from_audio
             
         elif object['type'] == 'pdf':
             # parse document
-            text_from_document = parse_pdf(object['content'])
+            text_from_document = parse_pdf(object['content'], object['oid'])
             combined_text += text_from_document
     
     summary = summarization(combined_text)
