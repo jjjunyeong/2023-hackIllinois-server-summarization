@@ -1,0 +1,8 @@
+nltk
+numpy
+scipy
+networkx
+replicate
+openai
+flask
+moviepy

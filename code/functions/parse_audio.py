@@ -1,18 +1,18 @@
 from config import *
 import os
 import replicate
-# import moviepy.editor
+import moviepy.editor
 
-# def video_to_audio(video_file_path):
-#     video = moviepy.editor.VideoFileClip(video_file_path)
+def video_to_audio(video_file_path):
+    video = moviepy.editor.VideoFileClip(video_file_path)
     
-#     file_name = video_file_path.split('_video.mp4')[0]
-#     audio_file_path = file_name + "_audio.mp3"
+    file_name = video_file_path.split('.mp4')[0]
+    audio_file_path = file_name + ".mp3"
     
-#     audio = video.audio
-#     audio.write_audiofile(audio_file_path)
+    audio = video.audio
+    audio.write_audiofile(audio_file_path)
     
-#     return audio_file_path
+    return audio_file_path
 
 def parse_audio(file_path):
     #Set the REPLICATE_API_TOKEN environment variable

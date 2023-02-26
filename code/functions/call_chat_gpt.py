@@ -2,7 +2,7 @@ import openai
 import nltk
 import re
 from config import *
-from functions.summarize import get_word_overlap_similarity
+from functions.get_summary import get_word_overlap_similarity
 import numpy as np
 
 # Set up the OpenAI API client
