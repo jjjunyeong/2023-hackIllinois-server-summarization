@@ -1,0 +1,114 @@
+In mathematics, the Fourier transform (FT) is a transform that converts a function into a form that describes the frequencies present in the original function. The output of the transform is a complex-valued function of frequency. The term Fourier transform refers to both this complex-valued function and the mathematical operation. When a distinction needs to be made the Fourier transform is sometimes called the frequency domain representation of the original function. The Fourier transfrom is analogous to decomposing the sound of a musical chord into terms of the intensity of its constituent pitches.
+Functions that are localized in the time domain have Fourier transforms that are spread out across the frequency domain and vice versa, a phenomenon known as the uncertainty principle. The critical case for this principle is the Gaussian function, of substantial importance in probability theory and statistics as well as in the study of physical phenomena exhibiting normal distribution (e.g., diffusion). The Fourier transform of a Gaussian function is another Gaussian function. Joseph Fourier introduced the transform in his study of heat transfer, where Gaussian functions appear as solutions of the heat equation.
+The Fourier transform can be formally defined as an improper Riemann integral, making it an integral transform, although this definition is not suitable for many applications requiring a more sophisticated integration theory.[note 1] For example, many relatively simple applications use the Dirac delta function, which can be treated formally as if it were a function, but the justification requires a mathematically more sophisticated viewpoint.[note 2]
+The Fourier transform can also be generalized to functions of several variables on Euclidean space, sending a function of 3-dimensional 'position space' to a function of 3-dimensional momentum (or a function of space and time to a function of 4-momentum). This idea makes the spatial Fourier transform very natural in the study of waves, as well as in quantum mechanics, where it is important to be able to represent wave solutions as functions of either position or momentum and sometimes both. In general, functions to which Fourier methods are applicable are complex-valued, and possibly vector-valued.[note 3] Still further generalization is possible to functions on groups, which, besides the original Fourier transform on R[clarification needed]or Rn (viewed as groups under addition), notably includes the discrete-time Fourier transform (DTFT, group = Z), the discrete Fourier transform (DFT, group = Z mod N) and the Fourier series or circular Fourier transform (group = S1, the unit circle ≈ closed finite interval with endpoints identified). The latter is routinely employed to handle periodic functions. The fast Fourier transform (FFT) is an algorithm for computing the DFT.
+The Fourier transform is an extension of the Fourier series, which in its most general form introduces the use of complex exponential functions. For example, for a function 
+f(x), the amplitude and phase of a frequency component at frequency, is given by this complex number:
+The extension provides a frequency continuum of components using an infinite integral of integration:
+Here, the transform of function f(x) at frequency is denoted by the complex number, which is just one of several common conventions. Evaluating Eq.1 for all values of produces the frequency-domain function. When the independent variable prepresents time (often denoted by the transform variable represents frequency (often denoted by). For example, if time is measured in seconds, then frequency is in hertz.
+For each frequency, the magnitude (absolute value) of the complex value represents the amplitude of a constituent complex sinusoid with that frequency, and the argument of the complex value represents that complex sinusoid's phase offset. If a frequency is not present, the transform has a value of 0 for that frequency. The Fourier transform is not limited to functions of time, but the domain of the original function is commonly referred to as the time domain. The Fourier inversion theorem provides a synthesis process that recreates the original function from its frequency domain representation.
+A key to interpreting Eq.1 is that the effect of multiplying is to subtract from every frequency component of function (also see Negative frequency) So the component that was at ends up at zero hertz, and the integral produces its amplitude, because all the other components are oscillatory and integrate to zero over an infinite interval.
+The functions are often referred to as a Fourier transform pair.[1]  A common notation for designating transform pairs is:[2]The complex number, conveys both amplitude and phase of frequency 
+So Eq.2 is a representation of f(x) as a weighted summation of complex exponential functions. This is known as the Fourier inversion theorem, and was first introduced in Fourier's Analytical Theory of Heat,[3][4] although a proof by modern standards was not given until much later.[5][6]
+For other common conventions and notations, including using the angular frequency ω instead of the ordinary frequency ξ, see Other conventions and Other notations below. The Fourier transform on Euclidean space is treated separately, in which the variable x often represents position and ξ momentum. The conventions chosen in this article are those of harmonic analysis, and are characterized as the unique conventions such that the Fourier transform is both unitary on L2 and an algebra homomorphism from L1 to L∞, without renormalizing the Lebesgue measure.[7]
+Many other characterizations of the Fourier transform exist. For example, one uses the Stone–von Neumann theorem: the Fourier transform is the unique unitary intertwiner for the symplectic and Euclidean Schrödinger representations of the Heisenberg group.
+History[edit]
+Main articles: Fourier analysis § History, and Fourier series § History
+In 1821, Fourier claimed (see Joseph Fourier § The Analytic Theory of Heat) that any function, whether continuous or discontinuous, can be expanded into a series of sines.[8] That important work was corrected and expanded upon by others to provide the foundation for the various forms of the Fourier transform used since.
+Negative frequency[edit]
+See also: Negative frequency § Simplifying the Fourier transform
+One aspect of the Fourier transform that is often confusing is its use of negative frequency. When frequency is thought of as the rate how often something happens, or in physics, as 1/T for some period of time T. Those notions of frequency are inherently positive. But the value of 
+ξ
+\xi  in Eq.1 is allow to take on any real number.
+
+For real-valued functions, there is a simple relationship between the values of the Fourier transform for positive and negative 
+ξ
+\xi  (see conjugation below). This makes it possible to avoid the subject of negative frequencies by using the sine and cosine transforms. But most authors prefer using Eq.1 rather than using two transforms. One reason for this is that many applications have to take the Fourier transform of complex-valued functions, such as partial differential equations, radar, nonlinear optics, quantum mechanics, and others. In these cases, the value of the Fourier transform at negative frequencies is distinct from the value at real frequencies, and they are important. In these situations, the concept of what is a frequency is defined by the Fourier transform rather than appealing to a rate or period.
+Fourier transform for periodic functions[edit]
+The Fourier transform of a periodic function cannot be defined using the integral formula directly. In order for integral in Eq.1 to be defined the function must be absolutely integrable. Instead it is common to instead use Fourier series. It is possible to extend the definition to include periodic functions by viewing them as tempered distributions.
+
+This makes it possible to see a connection between the Fourier series and the Fourier transform for periodic functions which have a convergent Fourier series. If 
+f
+(
+x
+)
+f(x) periodic function, with period 
+P
+P, that has a convergent Fourier serie
+where 
+c
+n
+c_{n} are the Fourier series coefficients of 
+f
+f. In other words the Fourier transform is a Dirac comb function whose teeth are multiplied by the Fourier series coefficients.
+The Fourier transform of an integrable function 
+f
+f can be sampled at regular intervals of 
+1
+P
+.
+{\displaystyle {\tfrac {1}{P}}.} These samples can be deduced from one cycle of a periodic function 
+f
+P
+f_{P} which has Fourier series coefficients proportional to those samples by the Poisson summation formula:
+The integrability of 
+f
+f ensures the periodic summation converges. Therefore, the samples 
+f
+^
+(
+k
+P
+)
+{\displaystyle {\hat {f}}\left({\tfrac {k}{P}}\right)} can be determined by:
+When 
+f
+(
+x
+)
+f(x) has compact support, 
+f
+P
+(
+x
+)
+{\displaystyle f_{P}(x)} has a finite number of terms within the interval of integration. When 
+f
+(
+x
+)
+f(x) does not have compact support, numerical evaluation of 
+f
+P
+(
+x
+)
+{\displaystyle f_{P}(x)} requires an approximation, such as tapering 
+f
+(
+x
+)
+f(x) or truncating the number of terms.
+The following figures provide a visual illustration of how the Fourier transform measures whether a frequency is present in a particular function. The depicted function f(t) = cos(6πt) e−πt2 oscillates at 3 Hz (if t measures seconds) and tends quickly to 0. (The second factor in this equation is an envelope function that shapes the continuous sinusoid into a short pulse. Its general form is a Gaussian function). This function was specially chosen to have a real Fourier transform that can be easily plotted. The first image contains its graph. In order to calculate 
+f
+^
+(
+3
+)
+{\displaystyle {\hat {f}}(3)} we must integrate e−i2π(3t)f(t). The second image shows the plot of the real and imaginary parts of this function. The real part of the integrand is almost always positive, because when f(t) is negative, the real part of e−i2π(3t) is negative as well. Because they oscillate at the same rate, when f(t) is positive, so is the real part of e−i2π(3t). The result is that when you integrate the real part of the integrand you get a relatively large number (in this case 
+1
+/
+2
+). On the other hand, when you try to measure a frequency that is not present, as in the case when we look at 
+f
+^
+(
+5
+)
+{\displaystyle {\hat {f}}(5)}, you see that both real and imaginary component of this function vary rapidly between positive and negative values, as plotted in the third image. Therefore, in this case, the integrand oscillates fast enough so that the integral is very small and the value for the Fourier transform for that frequency is nearly zero.
+
+The general situation may be a bit more complicated than this, but this in spirit is how the Fourier transform measures how much of an individual frequency is present in a function f(t).
+
+
+
+
