@@ -5,7 +5,7 @@ from urllib.request import Request, urlopen
 
 def pdf_to_text(object):
       # creating a pdf reader object
-      remote_file = urlopen(Request(object['url'])).read()
+      remote_file = urlopen(Request(object['file'])).read()
       memory_file = io.BytesIO(remote_file)
       reader = PdfReader(memory_file)
       
@@ -39,7 +39,7 @@ def parse_text(text, object):
                 sent_dict['raw'] = sent
                 sent_dict['page'] = i
                 sent_dict['id'] = object['id']
-                sent_dict['url'] = object['url']
+                sent_dict['file'] = object['file']
                 
                 processed_sents.append(sent_dict)
     

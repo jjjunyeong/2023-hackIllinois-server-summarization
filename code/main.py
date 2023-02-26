@@ -10,21 +10,43 @@ app = Flask(__name__)
 @app.route('/api/v1/machinelearning', methods=['GET', 'POST'])
 def base():
     print('we are at the base!!')
-    json_data = json.loads(request.data.decode('utf8'))
+    post_data = json.loads(request.data)['good']
     
+    # print(request.data['good'])
+    # print(request.data.good)
+    # if request.data == None or request.data == '':
+    #   print('I got a null or empty string value for data in a file')
+    # else:
+        # js = json.loads(str(data))
+        # print("//////")
+        # print(request.data.decode('utf8'))
+        # print(json.loads(request.data.decode('utf8')[0]))
+        # json_data = json.loads(request.data.decode('utf8'))
+    # print(json_data)
     if request.method == 'POST':
-        summary = receive_data(json_data)
-        return 'Received a POST request!', 200
-    
-    elif request.method == 'GET':
+        summary =  receive_data(post_data)
+        print(summary)
         return summary
+        #  'Received a POST request!', 200
+    
+    # elif request.method == 'GET':
+        # return summary
 
 if __name__ == '__main__':
     app.run()
 
-# pdfurl = "https://res.cloudinary.com/dlk3ezbal/image/upload/v1677408827/cramberry/muofg1xcckrqweherqhh.pdf"
-# videourl = "https://res.cloudinary.com/dlk3ezbal/video/upload/v1677407694/cramberry/yjtq56cqf9gharq60lfi.mov"
+# dolphin1 = "https://res.cloudinary.com/dlk3ezbal/image/upload/v1677413166/cramberry/t6pahrh2vitawswjviwf.pdf"
+# dolphin2 = "https://res.cloudinary.com/dlk3ezbal/image/upload/v1677413167/cramberry/cfzqnhwp04xaqlqauyvu.pdf"
+# dolphin3 = "https://res.cloudinary.com/dlk3ezbal/video/upload/v1677413167/cramberry/ntuoytefotxg0m6wnws1.mp4"
 
-# data = [{'type': 'pdf', 'url': pdfurl, 'id':0}, {'type':'video', 'url': videourl, 'id':1}]
-# summary = receive_data(data)
-# print(summary)
+# fourier1 = "https://res.cloudinary.com/dlk3ezbal/image/upload/v1677413166/cramberry/sqd1slzn5zzkciyitmvh.pdf"
+# fourier2 = "https://res.cloudinary.com/dlk3ezbal/video/upload/v1677413167/cramberry/lxgokwodalpkqlpbcenk.mp4"
+
+# data = [{'type': 'pdf', 'url': dolphin1, 'id':0},
+#         {'type': 'pdf', 'url': dolphin2, 'id':1},
+#         {'type':'video', 'url': dolphin3, 'id':2}]
+
+# data2 = [{'type': 'pdf', 'url': fourier1, 'id':0},
+#         {'type': 'video', 'url': fourier2, 'id':1}]
+
+# receive_data(data)

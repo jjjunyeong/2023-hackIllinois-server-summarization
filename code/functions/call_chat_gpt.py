@@ -40,11 +40,18 @@ def paraphrase(summary):
         # if similarity is empty 
         idx = np.argmax(similarity)
         sent_dict['type'] = summary[idx]['type']
+        
         if sent_dict['type'] == 'video':
             sent_dict['start'] = summary[idx]['start']
             sent_dict['summ'] = rf_sent
+            sent_dict['file'] = summary[idx]['file']
+            sent_dict['id'] = summary[idx]['id']
+            
         elif sent_dict['type'] == 'pdf':
             sent_dict['summ'] = rf_sent
+            sent_dict['page'] = summary[idx]['page']
+            sent_dict['file'] = summary[idx]['file']
+            sent_dict['id'] = summary[idx]['id']
             
         refined_summary.append(sent_dict)
 

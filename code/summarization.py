@@ -13,6 +13,8 @@ import moviepy
 # video_file_path = "../data/test_video.mp4"
 
 def receive_data(data):
+    # print('in receive data')
+    # print(data)
     combined_text = []
     
     for object in data:
@@ -51,7 +53,7 @@ def summarization(combined_text):
     print('refining the summary')
     final_summary = paraphrase(summary)
 
-    for sent in final_summary:
-        print(sent['sent'])
+    # for sent in final_summary:
+    #     print(sent['type'], sent['summ'])
         
     return final_summary

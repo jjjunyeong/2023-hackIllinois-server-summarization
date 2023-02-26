@@ -5,10 +5,13 @@ import moviepy.editor
 import re
 
 def video_to_audio(object):
-    video_file_path = object['url']
+    video_file_path = object['file']
     video = moviepy.editor.VideoFileClip(video_file_path)
     
-    file_name = re.split('cramberry/|.mp4|.mov|', video_file_path)[1]
+    file_name = video_file_path.replace(".mp4","").replace(".mov","").replace("/","").split("cramberry")[1]
+    # print('file_name: ', file_name)
+    
+    # file_name = re.split('cramberry/|.mp4|.mov|', video_file_path)[1]
     audio_file_path = os.getcwd().split("code")[0] + 'data/' + file_name + ".mp3"
     
     audio = video.audio
@@ -38,6 +41,6 @@ def parse_audio(audio_file_path, object):
     # https://replicate.com/openai/whisper/versions/30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed#input
     
     output = version.predict(**inputs)
-    text_objects = [{'type': object['type'], 'raw': seg['text'], 'start': seg['start'], 'end': seg['end'], 'id': object['id'], 'url':object['url']} for seg in output['segments']]
+    text_objects = [{'type': object['type'], 'raw': seg['text'], 'start': seg['start'], 'end': seg['end'], 'id': object['id'], 'file':object['file']} for seg in output['segments']]
         
     return text_objects
