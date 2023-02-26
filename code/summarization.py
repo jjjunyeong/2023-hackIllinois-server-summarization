@@ -1,6 +1,6 @@
 import nltk
 from functions.get_summary import summarize
-from functions.parse_pdf import parse_pdf
+from functions.parse_pdf import pdf_to_text
 from functions.parse_audio import parse_audio, video_to_audio
 from functions.preprocessing import preprocessing
 from functions.call_chat_gpt import paraphrase
@@ -13,20 +13,25 @@ import moviepy
 # video_file_path = "../data/test_video.mp4"
 
 def receive_data(data):
-    combined_text = ""
+    combined_text = []
     
     for object in data:
         if object['type'] == "video":
             # video from audio
-            audio_file_path = video_to_audio(object['file_path'])
+            print('extracting audio from video')
+            audio_file_path = video_to_audio(object)
             
             # parse audio
-            text_from_audio = parse_audio(audio_file_path, object['oid'])
+            print('extracting text from audio')
+            text_from_audio = parse_audio(audio_file_path, object)
+            # print(text_from_audio)
             combined_text += text_from_audio
             
         elif object['type'] == 'pdf':
             # parse document
-            text_from_document = parse_pdf(object['content'], object['oid'])
+            print('extracting text from pdf')
+            text_from_document = pdf_to_text(object)
+            # print(text_from_document)
             combined_text += text_from_document
     
     summary = summarization(combined_text)
@@ -37,13 +42,14 @@ def receive_data(data):
 
 def summarization(combined_text):
     # preprocess the text
+    print('preprocessing the text')
     final_text = preprocessing(combined_text)
 
+    print('summarizing')
     summary = summarize(final_text)
 
-    # rephrase the sentences
+    print('refining the summary')
     final_summary = paraphrase(summary)
-    # print(refined_summary)
 
     for sent in final_summary:
         print(sent['sent'])
